@@ -1,0 +1,24 @@
+<form [formGroup]="registerForm" [ngClass]="{ invalid: registerForm.invalid }">
+    <fieldset>
+        <input type="text"
+        placeholder="Name"
+        required formControlName="name"
+        name="name">
+
+        <input type="number"
+        placeholder="Age"
+        required formControlName="age"
+        name="age">
+
+        <div class="custom-select">
+            <select required name="select">
+                <option value="(none)">Select an Occupation</option>
+                <option *ngFor="let job of marsJobs" value="{{ job.id }}">{{ job.name }}</option>
+            </select>
+        </div>
+        <button type="button" (click)="logColonist()">Log Colonist</button>
+    </fieldset>
+    <fieldset>
+            <button type="submit">Submit</button>
+    </fieldset>
+</form>
