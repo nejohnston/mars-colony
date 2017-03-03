@@ -1,3 +1,20 @@
-<p>
-  report works!
-</p>
+<html>
+  <body class="report-page">
+    <div>
+      <form [formGroup]="reportForm" [ngClass]="{ invalid: reportForm.invalid }">
+    <fieldset>
+        <div class="custom-select">
+            <select required name="select">
+                <option value="(none)">Select an Alien</option>
+                <option *ngFor="let alien of marsAliens" value="{{ alien.id }}">{{ alien.type }}</option>
+            </select>
+        </div>
+        <div>
+          <textarea placeholder="Action Taken" formControlName="action" name="action"></textarea>
+        </div>
+        <button type="button" (click)="logEncounter()">Log Alien</button>
+    </fieldset>
+</form>
+    </div>
+  </body>
+</html>

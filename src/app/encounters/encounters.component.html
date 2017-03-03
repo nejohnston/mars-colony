@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <title>Encounters</title>
 </head>
-  <body class="home site-container">
+  <body class="encounters-page">
     <div class="site-header">
     <h1>Mars Colony 1</h1>
     </div>
+    <ul>
+      <li *ngFor="let encounter of encounters">{{ encounter.atype }}{{ encounter.action }}{{ encounter.date }}</li>
+    </ul>
 </body>
 </html>

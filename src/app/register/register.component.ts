@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewColonist, Job } from '../models'
+import { NewColonist, Job } from '../models';
+import { COLONISTS_URL, JOBS_URL } from '../models/API';
 import {
   FormGroup,
   FormControl,
@@ -9,43 +10,33 @@ import {
   AbstractControl,
 } from '@angular/forms';
 
+import { ColonistAPIService } from '../apiService/colonist';
+import { JobsAPIService } from '../apiService/jobs';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [ColonistAPIService, JobsAPIService]
 })
 export class RegisterComponent implements OnInit {
-
-  newColonist: NewColonist;
   marsJobs: Job[];
   title: string;
   registerForm: FormGroup;
-  constructor() {
-    //TODO: Call API, get jobs
-      this.marsJobs = [
-      {name: 'EMPEROR OF MARS',
-      id: '8',
-      description: 'I am all powerful, I am empire.',
-      },
-      {name: 'Lowly serf',
-      id: '1',
-      description: 'No responsibilities, no power.',
-      },
-      {name: 'Town Drunk',
-      id: '420',
-      description: 'Here we go liquor.',
-      },
-      {name: 'const Dracula',
-      id: '81008',
-      description: 'In exchange for our safety, we let him hunt vars and lets.'
-      }
-      ]
-      this.newColonist = new NewColonist ('', '', '',);
+  clickedButton: boolean;
+
+  constructor(
+    private colonistAPIService: ColonistAPIService,
+    private jobsAPIService: JobsAPIService) {
+
+
       this.registerForm = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
         age: new FormControl('', [Validators.required, this.acceptAge(18, 50)]),
         job_id: new FormControl('', [Validators.required]),
       });
+
+      this.getMarsJobs();
   }
 
   acceptAge(min: number, max: number) {
@@ -56,12 +47,31 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  logColonist(){
-    console.log(this.registerForm);
-  }
-
   ngOnInit() {
 
-  }
+  };
 
-}
+  getMarsJobs() {
+    this.jobsAPIService.getMarsJobs()
+                       .subscribe((result) => {
+                        this.marsJobs = (result);
+                       });
+  };
+
+ postNewColonist(event) {
+    event.preventDefault();
+    if(this.registerForm.invalid) {
+
+ } else {
+   const name = this.registerForm.get('name').value
+   const age = this.registerForm.get('age').value
+   const job_id = this.registerForm.get('job_id').value
+
+   const newColonist: NewColonist = new NewColonist(name, age, job_id);
+
+   this.colonistAPIService.saveColonist({ colonist: newColonist })
+                          .subscribe((result) => {
+                          console.log('Colonist was saved:', result)
+                          })
+ };
+}};
