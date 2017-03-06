@@ -1,18 +1,21 @@
 <html>
   <body class="report-page">
     <div>
-      <form [formGroup]="reportForm" [ngClass]="{ invalid: reportForm.invalid }">
+      <form
+      [formGroup]="reportForm"
+      [ngClass]="{ 'submitting': submitting }"
+      (ngSubmit)="postNewEncounter($event)">
     <fieldset>
         <div class="custom-select">
-            <select required name="select">
+            <select formControlName="atype" name="atype">
                 <option value="(none)">Select an Alien</option>
-                <option *ngFor="let alien of marsAliens" value="{{ alien.id }}">{{ alien.type }}</option>
+                <option *ngFor="let alien of marsAliens" value="{{ alien.type }}">{{ alien.type }}</option>
             </select>
         </div>
         <div>
           <textarea placeholder="Action Taken" formControlName="action" name="action"></textarea>
         </div>
-        <button type="button" (click)="logEncounter()">Log Alien</button>
+        <button>Log Alien</button>
     </fieldset>
 </form>
     </div>

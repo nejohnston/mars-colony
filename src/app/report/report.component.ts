@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NewEncounter, Alien } from '../models';
+
 import { AlienAPIService } from '../apiService/aliens';
+import { EncountersAPIService } from '../apiService/encounters';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -14,7 +17,7 @@ import {
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss'],
-  providers: [AlienAPIService]
+  providers: [AlienAPIService, EncountersAPIService]
 })
 
 export class ReportComponent implements OnInit {
@@ -22,21 +25,25 @@ export class ReportComponent implements OnInit {
   newEncounter: NewEncounter;
   marsAliens: Alien[];
   reportForm: FormGroup;
+
   constructor(
-    private alienAPIService: AlienAPIService
+    private router: Router,
+    private alienAPIService: AlienAPIService,
+    private encounterAPIService: EncountersAPIService
   )
   {
-
       this.reportForm = new FormGroup({
-        date: new FormControl('', [Validators.required]),
         atype: new FormControl('', [Validators.required]),
         action: new FormControl('', [Validators.required]),
-        colonist_id: new FormControl('', [Validators.required]),
       });
 
   this.getAliens();
 
   }
+
+   ngOnInit() {
+
+  };
 
   getAliens(){
     this.alienAPIService.getAliens()
@@ -45,8 +52,24 @@ export class ReportComponent implements OnInit {
                         })
   }
 
-  ngOnInit() {
+ postNewEncounter(event) {
+    event.preventDefault();
+    if(this.reportForm.invalid) {
 
-  }
+ } else {
+   const atype = this.reportForm.get('atype').value
+   const action = this.reportForm.get('action').value
+   const colonist_id = 4
+   const date = "2017-12-08"
+   const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
 
-}
+   this.encounterAPIService.saveNewEncounter({ encounter: newEncounter })
+                          .subscribe((result) => {
+                          this.router.navigate(['report']);
+
+
+                          })
+
+
+ };
+}};

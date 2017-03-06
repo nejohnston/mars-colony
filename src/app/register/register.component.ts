@@ -9,6 +9,7 @@ import {
   ValidatorFn,
   AbstractControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ColonistAPIService } from '../apiService/colonist';
 import { JobsAPIService } from '../apiService/jobs';
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
   clickedButton: boolean;
 
   constructor(
+    private router: Router,
     private colonistAPIService: ColonistAPIService,
     private jobsAPIService: JobsAPIService) {
 
@@ -71,7 +73,7 @@ export class RegisterComponent implements OnInit {
 
    this.colonistAPIService.saveColonist({ colonist: newColonist })
                           .subscribe((result) => {
-                          console.log('Colonist was saved:', result)
+                          this.router.navigate(['encounters']);
                           })
  };
 }};
