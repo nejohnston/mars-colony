@@ -1,13 +1,13 @@
 <div class="encounters-page">
-    <div class="site-header">
-    <h1>Mars Colony 1</h1>
-    </div>
-    <ul class="encounter-list">
+    <h1 class="encounters-header">Recent Encounters
+    <span>Seen an Alien? Report it!</span>
+    </h1>
+    <ul class="encounters-list">
       <li *ngFor="let encounter of encounters">{{ encounter.atype }}---{{ encounter.action }}---{{ encounter.date }}</li>
     </ul>
-    <div class="site-footer">
+    <footer class="site-footer">
     <div class="report-button">
-      <a href='/report'>n,k,knm,n,mn,</a>
+      <h1><a href='/report'>Report Encounter</a></h1>
     </div>
-    </div>
+    </footer>
 </div>
