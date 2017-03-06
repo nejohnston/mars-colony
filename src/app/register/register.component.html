@@ -1,7 +1,10 @@
+<div class="register-header">
+    <h1>What could you bring to Mars???</h1>
+</div>
 <form
 [formGroup]="registerForm"
 class="register-form"
-[ngClass]="{ 'submitting': submitting }"
+[ngClass]="{ 'submitting': theyClicked }"
 (ngSubmit)="postNewColonist($event)">
 
     <fieldset>
@@ -21,6 +24,6 @@ class="register-form"
                 <option *ngFor="let job of marsJobs" value="{{ job.id }}">{{ job.name }}</option>
             </select>
         </div>
-        <button type="submit">Log Colonist</button>
+        <button class="button" type="submit" (click)="theyClick">Log Colonist</button>
     </fieldset>
 </form>

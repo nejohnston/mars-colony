@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   title: string;
   registerForm: FormGroup;
   clickedButton: boolean;
+  theyClick: true;
 
   constructor(
     private router: Router,
@@ -48,6 +49,10 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
+
+theyClicked(){
+  this.theyClick;
+}
 
   ngOnInit() {
 

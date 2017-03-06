@@ -4,7 +4,7 @@
   </div>
   <form
       [formGroup]="reportForm"
-      [ngClass]="{ 'submitting': submitting }"
+      [ngClass]="{ 'submitting': theyClicked }"
       (ngSubmit)="postNewEncounter($event)">
     <fieldset>
         <div class="custom-select">
@@ -16,7 +16,7 @@
         <div>
           <textarea placeholder="Action Taken" formControlName="action" name="action"></textarea>
         </div>
-        <button class="button" type="submit">Log Alien</button>
+        <button class="button" type="submit" (click)="theyClick">Log Alien</button>
     </fieldset>
   </form>
 </div>

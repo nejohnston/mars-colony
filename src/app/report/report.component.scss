@@ -22,8 +22,13 @@
         width: 100%;
         margin-bottom: 2rem;
         height: auto;
-        animation: pulse .5s infinite;
         background: rgba(237,237,237,0.2);
+}
+form {
+    // animation: none;
+&.submitting .ng-invalid {
+        animation: pulse 1s infinite;
+}
 }
 
 @keyframes pulse {
@@ -34,7 +39,7 @@
             }
 }
 
-.button {
+.button, h1{
     display: flex;
     justify-content: center;
     font-size: 2.2rem;
@@ -42,5 +47,7 @@
     color: #fff;
     outline: none;
     margin: auto;
+    border: none;
+    cursor: pointer;
 }
 }

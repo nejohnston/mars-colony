@@ -25,6 +25,7 @@ export class ReportComponent implements OnInit {
   newEncounter: NewEncounter;
   marsAliens: Alien[];
   reportForm: FormGroup;
+  theyClick: true;
 
   constructor(
     private router: Router,
@@ -40,6 +41,10 @@ export class ReportComponent implements OnInit {
   this.getAliens();
 
   }
+
+theyClicked(){
+  this.theyClick;
+}
 
   ngOnInit() {
 
