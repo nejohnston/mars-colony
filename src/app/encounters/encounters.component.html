@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Encounters</title>
-</head>
-  <body class="encounters-page">
+<div class="encounters-page">
     <div class="site-header">
     <h1>Mars Colony 1</h1>
     </div>
-    <ul>
+    <ul class="encounter-list">
       <li *ngFor="let encounter of encounters">{{ encounter.atype }}---{{ encounter.action }}---{{ encounter.date }}</li>
     </ul>
-</body>
-</html>
+    <div class="site-footer">
+    <div class="report-button">
+      <a href='/report'>n,k,knm,n,mn,</a>
+    </div>
+    </div>
+</div>

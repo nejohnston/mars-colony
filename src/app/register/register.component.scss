@@ -8,7 +8,9 @@
         margin: auto;
         width: 75vw;
     }
-    input {
+    input, select {
+        color: #fff;
+        font-size: 1.5rem;
         padding-bottom: 2rem;
         display: block;
         width: 100%;
