@@ -1,7 +1,8 @@
-<html>
-  <body class="report-page">
-    <div>
-      <form
+<div class="report-page">
+  <div class="report-header">
+    <h1>What You See Homie</h1>
+  </div>
+  <form
       [formGroup]="reportForm"
       [ngClass]="{ 'submitting': submitting }"
       (ngSubmit)="postNewEncounter($event)">
@@ -15,9 +16,8 @@
         <div>
           <textarea placeholder="Action Taken" formControlName="action" name="action"></textarea>
         </div>
-        <button>Log Alien</button>
+        <button class="button" type="submit">Log Alien</button>
     </fieldset>
-</form>
-    </div>
-  </body>
-</html>
+  </form>
+</div>
+

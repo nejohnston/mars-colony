@@ -41,7 +41,7 @@ export class ReportComponent implements OnInit {
 
   }
 
-   ngOnInit() {
+  ngOnInit() {
 
   };
 
@@ -57,19 +57,15 @@ export class ReportComponent implements OnInit {
     if(this.reportForm.invalid) {
 
  } else {
-   const atype = this.reportForm.get('atype').value
-   const action = this.reportForm.get('action').value
-   const colonist_id = 4
-   const date = "2017-12-08"
-   const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
+const atype = this.reportForm.get('atype').value
+const action = this.reportForm.get('action').value
+const colonist_id = 4
+const date = "2017-12-08"
+const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
 
-   this.encounterAPIService.saveNewEncounter({ encounter: newEncounter })
-                          .subscribe((result) => {
-                          this.router.navigate(['report']);
-
-
-                          })
-
-
- };
+this.encounterAPIService.saveNewEncounter({ encounter: newEncounter })
+                        .subscribe((result) => {
+                        this.router.navigate(['encounters']);
+                        })
+};
 }};
