@@ -4,18 +4,6 @@
    License: none (public domain)
 */
 
-app-root {
-	z-index: -1;
-	animation: pulse1 4s infinite;
-	border-radius: 50%;
-	@keyframes pulse1 {
-    0%   {
-            box-shadow: 0 0 0 1rem rgba(0, 52, 76, 1),
-                        0 0 0 1rem rgba(0, 52, 76, 0.15),
-                        0 0 0 1rem rgba(0, 52, 76, 0.2);
-            }
-}
-}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

@@ -1,0 +1,20 @@
+.mars-blowing-up {
+    background: url(../../../assets/mars-colony-gif.gif) no-repeat;
+    background-size: cover;
+    width: 110vw;
+    height: 100vh;
+}
+.not-found-message {
+    display: block;
+    text-align: center;
+    z-index: 2;
+    max-width: 1120px;
+
+    p {
+        text-align: center;
+        color: magenta;
+        letter-spacing: 2px;
+        font-size: 3rem;
+        font-weight: 900;
+    }
+}
